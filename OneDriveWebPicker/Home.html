@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title> Test OneDrive</title>
+
+    <script type="text/javascript" src="https://js.live.net/v6.0/OneDrive.js" id="onedrive-js" client-id="1b99bfd2-fab5-4c1a-baa5-e82837c45438"></script>
+
+</head>
+<body>
+    <script type="text/javascript">
+
+  var pickerOptions = {
+      success: function (files) {
+          // Handle returned file object(s)
+          alert("You picked " + files.values[0].fileName);
+      },
+
+      cancel: function () {
+          // Handle  when the user cancels picking a file
+      },
+
+      error: function (e) {
+          // Handle when there is an error getting a link to the selected file
+      },
+
+      linkType: "downloadLink", // or webLink
+      multiSelect: false, // or true
+      openInNewWindow: true // or false
+  }
+  function launchOneDrivePicker() {
+      OneDrive.open(pickerOptions);
+  }
+    </script>
+    <h1>Opening Files From OneDrive</h1>
+
+    <p>
+        <button onClick="javascript:launchOneDrivePicker();" title=""Open from OneDrive">
+            <img style="vertical-align: middle; height: 16px;" src="https://js.live.net/v5.0/images/SkyDrivePicker/SkyDriveIcon_white.png">
+            <span class="oneDriveButton">Open from OneDrive</span>
+        </button>
+    </p>
+</body>
+</html>
