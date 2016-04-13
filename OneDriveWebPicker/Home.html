@@ -2,33 +2,29 @@
 <html>
 <head>
     <title> Test OneDrive</title>
-
-    <script type="text/javascript" src="https://js.live.net/v6.0/OneDrive.js" id="onedrive-js" client-id="00000000441778AD, fd03e998-29fa-4f23-8326-bfa912db6e8d"></script>
+    <script type="text/javascript" src="https://js.live.net/v7.0/OneDrive.js"></script>
 
 </head>
 <body>
     <script type="text/javascript">
 
-  var pickerOptions = {
-      success: function (files) {
-          // Handle returned file object(s)
-          alert("You picked " + files.values[0].fileName);
-      },
+        var odOptions = {
+            "clientId": "bde95834-2b43-4daf-a712-de047538bd83",
+            //action: "share | download | query",
+            action: "download",
+            multiSelect: false,
 
-      cancel: function () {
-          // Handle  when the user cancels picking a file
-      },
+            success: function (files) {
+                alert(JSON.stringify(files, null, '  '));
+            },
+            cancel: function () {
+                alert("Canceled");
+            },
+            error: function (e) { /* error handler */ }
+        }
 
-      error: function (e) {
-          // Handle when there is an error getting a link to the selected file
-      },
-
-      linkType: "downloadLink", // or webLink
-      multiSelect: false, // or true
-      openInNewWindow: true // or false
-  }
   function launchOneDrivePicker() {
-      OneDrive.open(pickerOptions);
+      OneDrive.open(odOptions);
   }
     </script>
     <h1>Opening Files From OneDrive</h1>
